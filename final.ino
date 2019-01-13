@@ -4,11 +4,11 @@
 byte speakerPin = A0;
 byte ledPin[8] = {4,5,6,7,8,9,10,11};
 short baseTone[8] = {NOTE_C4,NOTE_D4,NOTE_E4,NOTE_F4,NOTE_G4,
-NOTE_A4,NOTE_B4,NOTE_C4};
+NOTE_A4,NOTE_B4,NOTE_C4}; //基本do re mi fa so la si do7
 SoftwareSerial BTSerial(12,13);
-short *tempTone;
-byte *tempDuration;
-void Select(int R)
+short *tempTone; //暫存樂譜
+byte *tempDuration; //暫存拍子
+void Select(int R) //選擇樂譜 將樂譜放入暫存樂譜
 {
    if(R == 'a')
    {
@@ -23,10 +23,10 @@ void Select(int R)
      tempDuration= Sd;
    }
 }
-void press(byte pin)
+void press(byte pin) //按下keyboard上的動作 按下後一直響直到放開
 {
   digitalWrite(pin,1);
-  while(1) 
+  while(1)  //使用while卡住 直到收到放開訊號
   {
     if(BTSerial.read() == 'S') 
       break;    
@@ -34,7 +34,7 @@ void press(byte pin)
   digitalWrite(pin,0);
 }
 
-void game()
+void game() //讀取樂譜根據樂譜亮出提示LED的燈 按下對應key後繼續下一段
 {
     
     int n=0;
@@ -43,10 +43,10 @@ void game()
         byte t = bee[n];
         digitalWrite(t+3,1);
         char k;
-        while (1)
+        while (1) //使用while卡住 直到收到放開訊號
         {
            k = BTSerial.read();
-          if (k-'0'==t)
+          if (k-'0'==t) //使用0~7代表 Do~Do7
           {
             digitalWrite(t+3,0);
             tone(A0,baseTone[t]);
@@ -58,7 +58,7 @@ void game()
             noTone(A0);
             break;
           }
-          if(k == 'q')
+          if(k == 'q') //收到停止訊號後停止
           {
             digitalWrite(t+3,0); 
             return;
@@ -79,7 +79,7 @@ void setup() {
 
   }  
 
-bool start = false;
+bool start = false; //音樂盒開始狀態
 void loop() {  
    bool start = false;
    int thisNote = 0;  // 在此使用While 而不用 for
@@ -102,12 +102,12 @@ void loop() {
     // toneSpeed / 4 當四分音符
     // / 8 當 八分音符  
     // .  
-    for(int i=0;i<8;i++)
+    for(int i=0;i<8;i++) //音樂盒 音樂響起開始閃爍
       digitalWrite(ledPin[i],random(0,2));
-   R= BTSerial.read();
+   R= BTSerial.read(); //藍芽收訊
    /* Serial.print(tempTone[thisNote]);
     Serial.println(tempDuration[thisNote]);*/
-    if(R=='q')
+    if(R=='q') //收到停止訊號停止
       {   
         start = false;
         break;
