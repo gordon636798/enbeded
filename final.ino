@@ -62,6 +62,10 @@ void game(char T) //讀取樂譜根據樂譜亮出提示LED的燈 按下對應ke
     while(temp[n]>0)
     {   
         byte t = temp[n];
+        if(t==9)
+        for(int i=0;i<8;i++)
+          digitalWrite(ledPin[i],1);
+        else
         digitalWrite(t+3,1);
        
         char k;
@@ -70,7 +74,8 @@ void game(char T) //讀取樂譜根據樂譜亮出提示LED的燈 按下對應ke
            k = BTSerial.read();
           if (k-'0'==t) //使用0~7代表 Do~Do7
           {
-            digitalWrite(t+3,0);
+            for(int i=0;i<8;i++)
+                digitalWrite(ledPin[i],0);
             tone(A0,baseTone[t-1]);
             while(1) 
             {
@@ -82,7 +87,8 @@ void game(char T) //讀取樂譜根據樂譜亮出提示LED的燈 按下對應ke
           }
           if(k == 'q') //收到停止訊號後停止
           {
-            digitalWrite(t+3,0); 
+           for(int i=0;i<8;i++)
+              digitalWrite(ledPin[i],0);
             return;
           }
            
