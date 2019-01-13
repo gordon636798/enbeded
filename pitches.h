@@ -1,16 +1,5 @@
-#define NOTE_B0  31
-#define NOTE_C1  33
-#define NOTE_CS1 35
-#define NOTE_D1  37
-#define NOTE_DS1 39
+
 #define NOTE_E1  41
-#define NOTE_F1  44
-#define NOTE_FS1 46
-#define NOTE_G1  49
-#define NOTE_GS1 52
-#define NOTE_A1  55
-#define NOTE_AS1 58
-#define NOTE_B1  62
 #define NOTE_C2  65
 #define NOTE_CS2 69
 #define NOTE_D2  73
@@ -59,36 +48,10 @@
 #define NOTE_A5  880
 #define NOTE_AS5 932
 #define NOTE_B5  988
-#define NOTE_C6  1047
-#define NOTE_CS6 1109
-#define NOTE_D6  1175
-#define NOTE_DS6 1245
-#define NOTE_E6  1319
-#define NOTE_F6  1397
-#define NOTE_FS6 1480
-#define NOTE_G6  1568
-#define NOTE_GS6 1661
-#define NOTE_A6  1760
-#define NOTE_AS6 1865
-#define NOTE_B6  1976
-#define NOTE_C7  2093
-#define NOTE_CS7 2217
-#define NOTE_D7  2349
-#define NOTE_DS7 2489
-#define NOTE_E7  2637
-#define NOTE_F7  2794
-#define NOTE_FS7 2960
-#define NOTE_G7  3136
-#define NOTE_GS7 3322
-#define NOTE_A7  3520
-#define NOTE_AS7 3729
-#define NOTE_B7  3951
-#define NOTE_C8  4186
-#define NOTE_CS8 4435
-#define NOTE_D8  4699
-#define NOTE_DS8 4978
 
 
+short baseTone[9] = {NOTE_C4,NOTE_D4,NOTE_E4,NOTE_F4,NOTE_G4,
+NOTE_A4,NOTE_B4,NOTE_C5,NOTE_D5}; //°ò¥»do re mi fa so la si do7
 
 
 short CanonTone[] = {
@@ -167,10 +130,41 @@ byte Sd[]=
     8,8,8,8,8,8,4, 8,8,8,8,8,4,
     8,8,8,8,8,8,8, 8,8,8,4,1
 };
+
+short pink[]=
+{
+    NOTE_D5,NOTE_D5,NOTE_D5,NOTE_D5,NOTE_D5,NOTE_C5,NOTE_G4,NOTE_D5,NOTE_D5,NOTE_D5,NOTE_D5,NOTE_C5,NOTE_C5,
+    NOTE_D5,NOTE_D5,NOTE_D5,NOTE_D5,NOTE_D5,NOTE_C5,NOTE_B4,NOTE_B4,NOTE_A4,NOTE_B4,NOTE_C5,NOTE_C5,
+    baseTone[5],baseTone[4],baseTone[4],baseTone[4],baseTone[5],baseTone[6],baseTone[7],baseTone[7],baseTone[4],baseTone[4],baseTone[4],
+    baseTone[8],baseTone[8],baseTone[8],baseTone[8],baseTone[5],baseTone[6],baseTone[7],baseTone[7],baseTone[6],baseTone[7],baseTone[8],baseTone[8],
+
+    NOTE_D5,NOTE_D5,NOTE_D5,NOTE_D5,NOTE_D5,NOTE_C5,NOTE_G4,NOTE_D5,NOTE_D5,NOTE_D5,NOTE_D5,NOTE_C5,NOTE_C5,
+    NOTE_D5,NOTE_D5,NOTE_D5,NOTE_D5,NOTE_D5,NOTE_C5,NOTE_B4,NOTE_B4,NOTE_A4,NOTE_B4,NOTE_C5,NOTE_C5,
+    baseTone[5],baseTone[3],baseTone[4],baseTone[4],baseTone[5],baseTone[5],baseTone[6],baseTone[7],baseTone[4],baseTone[4],baseTone[4],
+    baseTone[8],baseTone[8],baseTone[8],baseTone[8],baseTone[8],baseTone[6],baseTone[7],baseTone[6],baseTone[5],baseTone[5],baseTone[6],baseTone[7],0,
+};
+byte pd[]=
+{
+    8,8,8,8,8,8,8,8,8,8,8,8,4,8,8,8,8,8,8,8,8,8,8,8,4,
+    8,8,8,8,8,8,8,8,8,8,4,
+    8,8,8,4,8,8,8,8,8,8,8,4,
+
+    8,8,8,8,8,8,8,8,8,8,8,8,4,8,8,8,8,8,8,8,8,8,8,8,4,
+    4,8,8,8,8,8,8,4,8,8,4,
+    8,8,8,8,4,8,4,8,8,4,4,4,
+};
 byte bee[]=
 {
     5,3,3,4,2,2,1,2,3,4,5,5,5,5,3,3,4,2,2,1,3,5,5,3,2,2,2,2,2,3,4,
     3,3,3,3,3,4,5,5,3,3,4,2,2,1,3,5,5,1,0
+};
+byte P[]=
+{
+    9,9,9,9,9,8,5,9,9,9,9,8,8,9,9,9,9,9,8,7,7,6,7,8,8,6,4,5,5,6,7,8,8,5,5,5,
+    9,9,9,9,6,7,8,8,7,8,9,9,
+    9,9,9,9,9,8,5,9,9,9,9,8,8,9,9,9,9,9,8,7,7,6,7,8,8,6,4,5,5,6,7,8,8,5,5,5,
+    6,4,5,5,6,6,7,8,5,5,5,9,9,9,9,9,7,8,7,6,6,7,8,0
+
 };
 
 
